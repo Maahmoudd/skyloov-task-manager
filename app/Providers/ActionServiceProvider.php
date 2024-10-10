@@ -6,7 +6,7 @@ use App\Actions\AuthAction;
 use App\Actions\IAuthAction;
 use Illuminate\Support\ServiceProvider;
 
-class ActionProvider extends ServiceProvider
+class ActionServiceProvider extends ServiceProvider
 {
     /**
      * Register services.

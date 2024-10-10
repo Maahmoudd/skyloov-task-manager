@@ -22,6 +22,8 @@ return new class extends Migration
 
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
 
+            $table->index(['status', 'due_date']);
+
             $table->timestamps();
         });
     }
