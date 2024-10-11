@@ -24,6 +24,7 @@ return new class extends Migration
 
             $table->index(['status', 'due_date']);
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }
