@@ -26,6 +26,7 @@ class FilterTasksRequest extends FormRequest
         return [
             'status' => ['nullable', Rule::enum(TaskStatusEnum::class)],
             'due_date' => ['nullable', 'date'],
+            'title' => ['nullable', 'string'],
         ];
     }
 }

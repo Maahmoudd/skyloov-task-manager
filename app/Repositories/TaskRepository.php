@@ -27,6 +27,7 @@ class TaskRepository extends BaseRepository implements ITaskRepository
     protected $fieldSearchable = [
         'status',
         'due_date',
+        'title',
     ];
 
 
