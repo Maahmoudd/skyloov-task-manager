@@ -22,7 +22,7 @@ class TaskController extends ApiBaseController
     public function store(StoreTaskRequest $request)
     {
         $task = $this->taskService->createTask($request->validated());
-        return $task ? $this->respondSuccess($task) : $this->respondError(errors: 'Failed to create task', message: 'Task not created', status: Response::HTTP_FORBIDDEN);
+        return $task ? $this->respondSuccess($task, status: Response::HTTP_CREATED) : $this->respondError(errors: 'Failed to create task', message: 'Task not created', status: Response::HTTP_FORBIDDEN);
     }
 
 

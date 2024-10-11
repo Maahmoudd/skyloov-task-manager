@@ -24,7 +24,7 @@ class TaskCreationTest extends TestCase
 
         $response = $this->post('/api/tasks', $taskData);
 
-        $response->assertOk();
+        $response->assertCreated();
         $this->assertDatabaseHas('tasks', $taskData);
     }
 
