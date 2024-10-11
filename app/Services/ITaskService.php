@@ -7,7 +7,7 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 interface ITaskService
 {
-    public function listAllTasks(): ?AnonymousResourceCollection;
+    public function listAllTasks(): ?array;
     public function createTask(array $data): ?TaskResource;
     public function getTaskById(int $id): ?TaskResource;
     public function updateTask(array $data, $id): ?TaskResource;

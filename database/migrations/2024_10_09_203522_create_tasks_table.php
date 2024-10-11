@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->enum('status', array_column(TaskStatusEnum::cases(), 'value'));
-            $table->dateTime('due_date');
+            $table->date('due_date');
 
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
 

@@ -6,4 +6,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', AuthController::class)->name('login');
 
-Route::apiResource('tasks', TaskController::class)->middleware('auth:sanctum');
+
+Route::prefix('tasks')->middleware('auth:sanctum')->group(function () {
+
+    Route::apiResource('', TaskController::class)->only(['store', 'index']);
+    Route::patch('', [TaskController::class, 'update'])->name('task.update');
+    Route::delete('', [TaskController::class, 'destroy'])->name('task.destroy');
+});

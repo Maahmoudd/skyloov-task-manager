@@ -4,14 +4,16 @@ namespace App\Services;
 
 use App\Http\Resources\TaskResource;
 use App\Models\Task;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use App\Repositories\ITaskRepository;
 
 class TaskService implements ITaskService
 {
+    public function __construct(protected ITaskRepository $taskRepository){}
 
-    public function listAllTasks(): ?AnonymousResourceCollection
+    public function listAllTasks(): ?array
     {
-        // TODO: Implement listAllTasks() method.
+        $tasks = $this->taskRepository->with('user')->orderBy('due_date')->paginate();
+        return $tasks ? (array)TaskResource::collection($tasks) : null;
     }
 
     public function createTask(array $data): ?TaskResource

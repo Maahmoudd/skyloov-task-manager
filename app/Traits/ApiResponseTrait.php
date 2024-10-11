@@ -28,13 +28,13 @@ trait ApiResponseTrait
         return response()->json($response, $status, $extraHeaders);
     }
 
-    public function respondSuccessWithPagination(Paginator $paginate, $data, string $message = "Success", int $status = 200, $extraHeaders = []): JsonResponse
+    public function respondSuccessWithPagination($paginate, $data, string $message = "Success", int $status = 200, $extraHeaders = []): JsonResponse
     {
         Log::debug("SUCCESS API Response: with paginator");
 
         $data = array_merge($data, [
             'paginator' => [
-                'total_count'  => $paginate->total(),
+                'next_page'  => $paginate->nextPageUrl(),
                 'total_pages' => ceil($paginate->total() / $paginate->perPage()),
                 'current_page' => $paginate->currentPage(),
                 'limit' => $paginate->perPage(),

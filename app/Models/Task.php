@@ -16,7 +16,7 @@ class Task extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-        'due_date' => 'datetime',
+        'due_date' => 'date',
     ];
 
     protected static function booted()
