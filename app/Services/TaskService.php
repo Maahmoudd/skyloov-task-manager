@@ -22,18 +22,19 @@ class TaskService implements ITaskService
         return $task ? TaskResource::make($task->load('user')) : null;
     }
 
-    public function getTaskById(int $id): ?TaskResource
+    public function getTaskById(int $id): ?Task
     {
-        // TODO: Implement getTaskById() method.
+        return $this->taskRepository->find($id);
     }
 
-    public function updateTask(array $data, $id): ?TaskResource
+    public function updateTask(array $data): ?TaskResource
     {
-        // TODO: Implement updateTask() method.
+        $task = $this->getTaskById($data['id']);
+        return $task ? TaskResource::make($this->taskRepository->update($data, $task->id)->load('user')) : null;
     }
 
     public function deleteTask(int $id): bool
     {
-        // TODO: Implement deleteTask() method.
+        return $this->taskRepository->delete($id);
     }
 }
